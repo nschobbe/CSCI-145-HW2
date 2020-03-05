@@ -8,11 +8,10 @@ public class SparseMatrix {
     public SparseMatrix(int rows, int columns) {
         this.totalRows = rows;
         this.totalColumns = columns;
-
     }
 
     public void insert(int row, int column, int value) {
-
+        
     }
 
     public MatrixRow getRow(int position) {
@@ -35,7 +34,7 @@ public class SparseMatrix {
         return null;
     }
 
-    public SparseMatrix produce(SparseMatrix other) {
+    public SparseMatrix product(SparseMatrix other) {
         return null;
     }
 }

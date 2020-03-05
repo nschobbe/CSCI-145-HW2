@@ -1,8 +1,11 @@
 public class MatrixColumn {
+    private MatrixColumn head;
     private ValueNode first;
     private MatrixColumn next;
 
+    public MatrixColumn() {
 
+    }
     public ValueNode getFirst() {
         return first;
     }
@@ -16,10 +19,14 @@ public class MatrixColumn {
     }
 
     public void insert(ValueNode value) {
-
+        
     }
 
-    public int get(int position) {
+    public int get(int position) { //what would the insert method look like here, as well as the get, how does this linkedlist work
+        MatrixColumn current = 
+        while (this.getNext() != null) {
+
+        }
         return 0;
     }
 
