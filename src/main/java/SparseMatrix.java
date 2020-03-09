@@ -1,4 +1,3 @@
-
 public class SparseMatrix {
     private int totalRows;
     private int totalColumns;
@@ -8,18 +7,50 @@ public class SparseMatrix {
     public SparseMatrix(int rows, int columns) {
         this.totalRows = rows;
         this.totalColumns = columns;
+
+        firstRow = new MatrixRow();
+        MatrixRow prevRow = firstRow;
+
+        for(int i = 1; i < rows; i++) {
+            // create a new matrix row
+            MatrixRow nextRow = new MatrixRow();
+            // make it the successor of the previous
+            prevRow.setNext(nextRow);
+            prevRow = nextRow;
+
+        }
+
+        firstColumn = new MatrixColumn();
+        MatrixColumn prevColumn = firstColumn;
+
+        for(int j = 1; j < columns; j++) {
+            MatrixColumn nextColumn = new MatrixColumn();
+            prevColumn.setNext(nextColumn);
+            prevColumn = nextColumn;
+        }
     }
 
     public void insert(int row, int column, int value) {
-        
+        ValueNode node = new ValueNode(row, column, value);
+        //MatrixRow from getRow
+        //that row .insert (node)
     }
 
     public MatrixRow getRow(int position) {
-        return null;
+        MatrixRow temp = firstRow;
+        for(int i = 1; i < position; i++){
+            temp = temp.getNext();
+        }
+        return temp;
     }
 
     public MatrixColumn getColumn(int position) {
-        return null;
+        MatrixColumn temp = firstColumn;
+        for(int i = 1; i < position; i++){
+            temp = temp.getNext();
+        }
+        return temp;
+
     }
 
     public int getValue(int row, int column) {
@@ -34,7 +65,7 @@ public class SparseMatrix {
         return null;
     }
 
-    public SparseMatrix product(SparseMatrix other) {
+    public SparseMatrix produce(SparseMatrix other) {
         return null;
     }
 }
