@@ -11,7 +11,21 @@ public class SparseMatrix {
     }
 
     public void insert(int row, int column, int value) {
+        ValueNode node = new ValueNode(row, column, value); //creating new ValueNode to be inserted
+        MatrixRow tempRow;
+        MatrixColumn tempCol;
         
+        tempRow = this.firstRow; //iterate through the list of MatrixRows until the right one, insert Node into MatrixRow 
+        for (int i = 0; i < row; i++) {
+            tempRow = tempRow.getNext();
+        }
+        tempRow.insert(node);
+
+        tempCol = this.firstColumn; //same as the rows, but with MatrixColumns instead
+        for (int j = 0; j < column; j++) {
+            tempCol = tempCol.getNext();
+        }
+        tempCol.insert(node);
     }
 
     public MatrixRow getRow(int position) {
