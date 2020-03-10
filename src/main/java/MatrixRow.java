@@ -16,7 +16,30 @@ public class MatrixRow {
     }
 
     public void insert(ValueNode value) {
-
+        if (this.first == null) { //if the row is empty, set the first equal to the valuenode being inserted
+            this.first = value;
+        }
+        else if (this.first.getColumn() < value.getColumn()) { //if the col of the value being inserted is less than the col of the first, put the val in before
+            ValueNode temp = this.first;
+            this.first = value;
+            this.first.setNextColumn(temp);
+        }
+        else if (this.first.getColumn() > value.getColumn()) { //else insert it in the correct spot
+            ValueNode temp = this.first;
+            ValueNode temp2;
+            while (value.getColumn() > temp.getColumn() && temp.getNextColumn() != null) {
+                temp = temp.getNextColumn();
+            }
+            if (temp.getNextColumn() != null) {
+                temp2 = temp.getNextColumn();
+                temp.setNextColumn(value);
+                temp = temp.getNextColumn();
+                temp.setNextColumn(temp2);
+            }
+            else {
+                temp.setNextColumn(value);
+            }
+        }
     }
 
     public int get(int position) {

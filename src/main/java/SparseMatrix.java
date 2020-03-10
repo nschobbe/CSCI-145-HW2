@@ -31,7 +31,6 @@ public class SparseMatrix {
     }
 
     public void insert(int row, int column, int value) {
-<<<<<<< HEAD
         ValueNode node = new ValueNode(row, column, value); //creating new ValueNode to be inserted
         MatrixRow tempRow;
         MatrixColumn tempCol;
@@ -47,11 +46,6 @@ public class SparseMatrix {
             tempCol = tempCol.getNext();
         }
         tempCol.insert(node);
-=======
-        ValueNode node = new ValueNode(row, column, value);
-        //MatrixRow from getRow
-        //that row .insert (node)
->>>>>>> 97fe5c257298082edb41e1e84cb11c91dff4b001
     }
 
     public MatrixRow getRow(int position) {
