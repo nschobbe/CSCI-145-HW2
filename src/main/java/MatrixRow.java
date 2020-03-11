@@ -46,19 +46,20 @@ public class MatrixRow {
         ValueNode temp = first;
         int value;
 
-        while(temp != null && temp.getColumn() < position){
+        if (this.first == null) {
+            return -1;
+        }
+        while (position > temp.getColumn()) {
+            System.out.println("Position: " + position + ", Current Column " + temp.getColumn());
             temp = temp.getNextColumn();
         }
-        if(temp == null){
-            value = -1;
+        if (temp == null) {
+            return 0;
         }
-        if(temp.getColumn() != position){
-            value = 0;
+        else {
+            return temp.getValue();
         }
-        else{
-            value = temp.getValue();
-        }
-        return value;
+
     }
 
 }
