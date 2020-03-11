@@ -70,14 +70,19 @@ public class SparseMatrix {
     }
 
     public void print() {
-
+        for (int i = 0; i < this.totalRows; i++) {
+            for (int j = 0; j < this.totalColumns; j++) {
+                System.out.print(this.getValue(i, j) + " ");
+            }
+            System.out.println();
+        }
     }
 
     public SparseMatrix transpose() {
         return null;
     }
 
-    public SparseMatrix produce(SparseMatrix other) {
+    public SparseMatrix product(SparseMatrix other) {
         return null;
     }
 }
