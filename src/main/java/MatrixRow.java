@@ -49,27 +49,18 @@ public class MatrixRow {
 
     public int get(int position) {
         ValueNode temp = first;
-
-        try {
-            int value;
+            int value = 0;
 
             while(temp != null && temp.getColumn() < position){
                 temp = temp.getNextColumn();
             }
             if(temp == null){
-                value = -1;
-            }
-            if (temp.getColumn() != position) {
                 value = 0;
             }
-            else{
+            else if (temp.getColumn() == position) {
                 value = temp.getValue();
             }
-            return value;
-        } catch(Exception e){
-            //System.out.println(e);
-        }
-        return -1;
+        return value;
 
 
 

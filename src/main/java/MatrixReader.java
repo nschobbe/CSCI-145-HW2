@@ -29,7 +29,7 @@ public class MatrixReader {
 
                     int columnNumber = Integer.parseInt(finalTokens[0]); //parse finaltokens for integer at index 0.
                     int value = Integer.parseInt(finalTokens[1]); //parse final tokens for integer at index 1.
-                    System.out.println(counter + " " + columnNumber + " " + value);
+                    //System.out.println(counter + " " + columnNumber + " " + value);
                  
                     matrix.insert(counter, columnNumber, value); //call matrix.insert with counter for row #, col #, and value
 
