@@ -18,16 +18,19 @@ public class MatrixReader {
             int columns = Integer.parseInt(input.nextLine()); // parse the second input into an integer defining total columns
 
             matrix = new SparseMatrix(rows, columns); //create sparce matrix
-            int counter = 1; //counter for which row we are on
+            int counter = 0; //counter for which row we are on
 
             while (input.hasNext()) {                            //While there is more in the text file: make a string array of the token created
                 String[] token = input.nextLine().split("\\s+"); //by splitting the first line with spaces. (1,8)
 
-                for (int i = 0; i < token.length; i++) {           //For every token in the array split them with commas and place them
+                for (int i = 0; i < token.length - 1; i++) {           //For every token in the array split them with commas and place them
                     String[] finalTokens = token[i].split(","); //in a new array called finalTokens.
 
                     int columnNumber = Integer.parseInt(finalTokens[0]); //parse finaltokens for integer at index 0.
                     int value = Integer.parseInt(finalTokens[1]); //parse final tokens for integer at index 1.
+
+                 
+                    System.out.println(counter);
                     matrix.insert(counter, columnNumber, value); //call matrix.insert with counter for row #, col #, and value
                     counter = counter + 1;
                 }

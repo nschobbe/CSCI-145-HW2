@@ -36,15 +36,18 @@ public class SparseMatrix {
         MatrixColumn tempCol;
         
         tempRow = this.firstRow; //iterate through the list of MatrixRows until the right one, insert Node into MatrixRow 
-        for (int i = 0; i < row; i++) {
+        System.out.println("**********************");
+        for (int i = 0; i < row - 1; i++) {
             tempRow = tempRow.getNext();
+            System.out.println(tempRow);
         }
         tempRow.insert(node);
 
         tempCol = this.firstColumn; //same as the rows, but with MatrixColumns instead
-        for (int j = 0; j < column; j++) {
+        for (int j = 0; j < column - 1; j++) {
             tempCol = tempCol.getNext();
         }
+        //System.out.println(tempCol);
         tempCol.insert(node);
     }
 
