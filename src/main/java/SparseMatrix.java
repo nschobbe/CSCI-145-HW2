@@ -58,25 +58,22 @@ public class SparseMatrix {
 
     public MatrixColumn getColumn(int position) {
         MatrixColumn temp = firstColumn;
-        for(int i = 1; i < position; i++){
+        for(int i = 1; i < position; i++) {
             temp = temp.getNext();
         }
         return temp;
-
     }
 
     public int getValue(int row, int column) {
-        Node current = row;
-        int count = 0;
-        while(count < column) {
-            count++;
-            current = current.getNext();
+        MatrixRow tRow = this.firstRow;
+        for (int i = 0; i < row; i++) {
+            tRow = tRow.getNext();
         }
-        if(current == null){
+        if (tRow.get(column) == -1) {
             return 0;
         }
-        if(current != null){
-            return current;
+        else {
+            return tRow.get(column);
         }
     }
 
