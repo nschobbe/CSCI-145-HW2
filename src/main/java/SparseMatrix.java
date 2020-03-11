@@ -66,7 +66,18 @@ public class SparseMatrix {
     }
 
     public int getValue(int row, int column) {
-        return 0;
+        Node current = row;
+        int count = 0;
+        while(count < column) {
+            count++;
+            current = current.getNext();
+        }
+        if(current == null){
+            return 0;
+        }
+        if(current != null){
+            return current;
+        }
     }
 
     public void print() {
