@@ -17,7 +17,7 @@ public class SparseMatrix {
             // make it the successor of the previous
             prevRow.setNext(nextRow);
             prevRow = nextRow;
-            System.out.println("Row " + i + " created");
+            //System.out.println("Row " + i + " created");
         }
 
         firstColumn = new MatrixColumn();
@@ -27,7 +27,7 @@ public class SparseMatrix {
             MatrixColumn nextColumn = new MatrixColumn();
             prevColumn.setNext(nextColumn);
             prevColumn = nextColumn;
-            System.out.println("Column " + j + " created");
+            //System.out.println("Column " + j + " created");
         }
     }
 
@@ -38,13 +38,18 @@ public class SparseMatrix {
         
         tempRow = this.firstRow; //iterate through the list of MatrixRows until the right one, insert Node into MatrixRow 
         for (int i = 0; i < row - 1; i++) {
-            tempRow = tempRow.getNext();
+            //System.out.println(value + " this is the value");
+            if(tempRow.getNext() != null) {
+                tempRow = tempRow.getNext();
+            }
         }
         tempRow.insert(node);
 
         tempCol = this.firstColumn; //same as the rows, but with MatrixColumns instead
         for (int j = 0; j < column - 1; j++) {
+            //System.out.println(tempCol);
             tempCol = tempCol.getNext();
+
         }
         //System.out.println(tempCol);
         tempCol.insert(node);
@@ -81,7 +86,7 @@ public class SparseMatrix {
 
     public void print() {
         for (int i = 0; i < this.totalRows; i++) {
-            for (int j = 0; j < this.totalColumns; j++) {
+            for (int j = 1; j <= this.totalColumns; j++) {
                 System.out.print(this.getValue(i, j) + " ");
             }
             System.out.println();

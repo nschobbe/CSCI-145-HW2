@@ -17,10 +17,12 @@ public class MatrixRow {
 
     public void insert(ValueNode value) {
         if (this.first == null) { //if the row is empty, set the first equal to the valuenode being inserted
+            System.out.println(value + " this is the value row 1");
             this.first = value;
         }
         else if (this.first.getColumn() < value.getColumn()) { //if the col of the value being inserted is less than the col of the first, put the val in before
             ValueNode temp = this.first;
+            System.out.println(value + " this is the value row 2");
             this.first = value;
             this.first.setNextColumn(temp);
         }
@@ -32,11 +34,14 @@ public class MatrixRow {
             }
             if (temp.getNextColumn() != null) {
                 temp2 = temp.getNextColumn();
+                System.out.println(value + " this is the value row 3");
                 temp.setNextColumn(value);
                 temp = temp.getNextColumn();
+                System.out.println(value + " this is the value row 4");
                 temp.setNextColumn(temp2);
             }
             else {
+                System.out.println(value + " this is the value row 5");
                 temp.setNextColumn(value);
             }
         }
@@ -44,21 +49,29 @@ public class MatrixRow {
 
     public int get(int position) {
         ValueNode temp = first;
-        int value;
 
-        if (this.first == null) {
-            return -1;
+        try {
+            int value;
+
+            while(temp != null && temp.getColumn() < position){
+                temp = temp.getNextColumn();
+            }
+            if(temp == null){
+                value = -1;
+            }
+            if (temp.getColumn() != position) {
+                value = 0;
+            }
+            else{
+                value = temp.getValue();
+            }
+            return value;
+        } catch(Exception e){
+            //System.out.println(e);
         }
-        while (position > temp.getColumn()) {
-            System.out.println("Position: " + position + ", Current Column " + temp.getColumn());
-            temp = temp.getNextColumn();
-        }
-        if (temp == null) {
-            return 0;
-        }
-        else {
-            return temp.getValue();
-        }
+        return -1;
+
+
 
     }
 
